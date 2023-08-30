@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="M02_BasicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="M02_CommonSetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="key" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="value" Type="nvarchar" MaxLength="255" />
+          <Property Name="common_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="setting_for" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="M02_DefaultCommonSetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="key" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="value" Type="nvarchar" MaxLength="255" />
+          <Property Name="common_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="setting_for" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="M02_EmailSettings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="255" />
+          <Property Name="pass" Type="nvarchar" MaxLength="255" />
+          <Property Name="smtp_host" Type="nvarchar" MaxLength="255" />
+          <Property Name="smtp_port" Type="int" />
+          <Property Name="enable_ssl" Type="bit" />
+          <Property Name="create_time" Type="datetime" />
+          <Property Name="create_by" Type="nvarchar" MaxLength="255" />
+          <Property Name="modify_time" Type="datetime" />
+          <Property Name="modify_by" Type="nvarchar" MaxLength="255" />
+          <Property Name="tenant_id" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityContainer Name="M02_BasicModelStoreContainer">
+          <EntitySet Name="M02_CommonSetting" EntityType="Self.M02_CommonSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M02_DefaultCommonSetting" EntityType="Self.M02_DefaultCommonSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M02_EmailSettings" EntityType="Self.M02_EmailSettings" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="M02_BasicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="M02_CommonSetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="key" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="common_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="setting_for" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M02_DefaultCommonSetting">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="key" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="common_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="setting_for" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M02_EmailSettings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="smtp_host" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="smtp_port" Type="Int32" />
+          <Property Name="enable_ssl" Type="Boolean" />
+          <Property Name="create_time" Type="DateTime" Precision="3" />
+          <Property Name="create_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="modify_time" Type="DateTime" Precision="3" />
+          <Property Name="modify_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tenant_id" Type="Guid" />
+        </EntityType>
+        <EntityContainer Name="M02_BasicEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="M02_CommonSetting" EntityType="Self.M02_CommonSetting" />
+          <EntitySet Name="M02_DefaultCommonSetting" EntityType="Self.M02_DefaultCommonSetting" />
+          <EntitySet Name="M02_EmailSettings" EntityType="Self.M02_EmailSettings" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="M02_BasicModelStoreContainer" CdmEntityContainer="M02_BasicEntities">
+          <EntitySetMapping Name="M02_CommonSetting">
+            <EntityTypeMapping TypeName="M02_BasicModel.M02_CommonSetting">
+              <MappingFragment StoreEntitySet="M02_CommonSetting">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="key" ColumnName="key" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="common_type" ColumnName="common_type" />
+                <ScalarProperty Name="setting_for" ColumnName="setting_for" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M02_DefaultCommonSetting">
+            <EntityTypeMapping TypeName="M02_BasicModel.M02_DefaultCommonSetting">
+              <MappingFragment StoreEntitySet="M02_DefaultCommonSetting">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="key" ColumnName="key" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="common_type" ColumnName="common_type" />
+                <ScalarProperty Name="setting_for" ColumnName="setting_for" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M02_EmailSettings">
+            <EntityTypeMapping TypeName="M02_BasicModel.M02_EmailSettings">
+              <MappingFragment StoreEntitySet="M02_EmailSettings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="smtp_host" ColumnName="smtp_host" />
+                <ScalarProperty Name="smtp_port" ColumnName="smtp_port" />
+                <ScalarProperty Name="enable_ssl" ColumnName="enable_ssl" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="modify_time" ColumnName="modify_time" />
+                <ScalarProperty Name="modify_by" ColumnName="modify_by" />
+                <ScalarProperty Name="tenant_id" ColumnName="tenant_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

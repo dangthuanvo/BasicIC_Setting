@@ -1,0 +1,16 @@
+﻿*.DS_Store
+[Tt]humbs.db
+*.suo
+logs
+*.log
+[Bb]in
+[Oo]bj
+*.zip
+*.rar
+.vs
+*.sql
+*.user
+*.exe
+*.pdb
+/packages
+/.vscode
